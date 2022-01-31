@@ -23,9 +23,9 @@ export const FormEditor = ({arr}) => {
         setStatement({...statement, [stateName]: checkState })
     }
 
-    const multiSelectHandler = (selected, e) => {
+    const multiSelectHandler = (selectedFields, e) => {
         const stateName = e.target.name
-        setStatement({...statement, [stateName]: selected })
+        setStatement({...statement, [stateName]: selectedFields })
     }
 
     console.log(statement)
