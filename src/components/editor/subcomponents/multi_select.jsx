@@ -11,8 +11,6 @@ export const MultiSelect = ({data, multiSelectHandler}) => {
         multiSelectHandler(selectedFields, e)
     }
 
-    // console.log(selected)
-
     return <select className={styles.multiSelect} name={data.name} multiple={true} key={data.key} onChange={e => {selectHandler(e)}}>
                 {data.options.map(elem => <option value={elem} name={elem} key={data.key + elem}>
                     {elem}
