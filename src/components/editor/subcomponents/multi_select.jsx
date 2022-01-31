@@ -2,7 +2,7 @@ import { useState } from "react/cjs/react.development"
 import styles from './../formEditor.module.css'
 
 export const MultiSelect = ({data, multiSelectHandler}) => {
-    const [selected, setSelected] = useState('')
+    const [selected, setSelected] = useState()
     const selectHandler = (e) => {
         const updatedSelections = [...e.target.options]
       .filter(option => option.selected)
