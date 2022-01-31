@@ -1,38 +1,36 @@
-import { checkInput } from './subcomponents/checkbox'
-import { multiCheck } from './subcomponents/checkmulti'
-import { textInput } from './subcomponents/input'
-import { multiInput } from './subcomponents/inputmulti'
-import { numberInput } from './subcomponents/number'
-import { passwordInput } from './subcomponents/password'
-import { areaInput } from './subcomponents/textarea'
-import { radioInput } from './subcomponents/radio'
-import { selectInput } from './subcomponents/select'
+import { CheckInput } from './subcomponents/checkbox'
+import { MultiCheck } from './subcomponents/checkmulti'
+import { TextInput } from './subcomponents/input'         
+import { MultiInput } from './subcomponents/inputmulti'
+import { NumberInput } from './subcomponents/number'        
+import { PasswordInput } from './subcomponents/password'    
+import { AreaInput } from './subcomponents/textarea'      
+import { RadioInput } from './subcomponents/radio'
+import { SelectInput } from './subcomponents/select'
 import { MultiSelect } from './subcomponents/multi_select'
+import { KeyValue } from './subcomponents/keyvalue'
 
 const keyHolder = {
-    "textInput" : textInput,
-    "numberInput" : numberInput,
-    "passwordInput" : passwordInput,
-    "areaInput" : areaInput,
-    "checkInput" : checkInput,
-    "multiInput" : multiInput,
-    "multiCheck" : multiCheck,
-    "radioInput" : radioInput,
-    "selectInput" : selectInput,
-    "multiSelect" : MultiSelect
+    "textInput" : TextInput,
+    "numberInput" : NumberInput,
+    "passwordInput" : PasswordInput,
+    "areaInput" : AreaInput,
+    "checkInput" : CheckInput,
+    "multiInput" : MultiInput,
+    "multiCheck" : MultiCheck,
+    "radioInput" : RadioInput,
+    "selectInput" : SelectInput,
+    "multiSelect" : MultiSelect,
+    "keyValue" : KeyValue
 }
 
-export const FieldTemplate = ({data, changeHandler, checkedHandler, multiInputHandler, multiCheckHandler, multiSelectHandler}) => {
+export const FieldTemplate = ({data, changeHandler}) => {
     for (const key in keyHolder) {
         if (key === data.type){
             const ComponentName = keyHolder[key]
             return (
                 <ComponentName data={data} 
                     changeHandler={changeHandler} 
-                    checkedHandler={checkedHandler} 
-                    multiInputHandler={multiInputHandler}
-                    multiCheckHandler={multiCheckHandler}
-                    multiSelectHandler={multiSelectHandler}
                 />
             )
         }

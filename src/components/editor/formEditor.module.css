@@ -79,3 +79,13 @@ textarea {
       border-radius: 15px;
       overflow: hidden;
   }
+
+  .keyValue {
+      width: 100px;
+  }
+
+  .keyValueText {
+      width: 260px;
+      margin: 0;
+      margin-left: 20px;
+  }

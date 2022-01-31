@@ -3,44 +3,68 @@ import styles from "./formEditor.module.css"
 import { FieldTemplate } from "./fieldtemplate"
 
 export const FormEditor = ({arr}) => {
-    const [statement, setStatement] = useState('')
+    // const [statement, setStatement] = useState('')
 
-    const changeHandler = (e) => {
-        setStatement({...statement, [e.target.name] : e.target.value})
-    }
+    const [statement, setStatement] = useState(arr.reduce((acc, inputObj) => {
+        switch(inputObj.type) {
+            case "textInput":
+                acc[inputObj.name] = ""
+                break;
+            case "multiInput":
+                acc[inputObj.name] = []
+                break;
+            case "numberInput":
+                    acc[inputObj.name] = ""
+                break;
+            case "passwordInput":
+                    acc[inputObj.name] = ""
+                break;
+            case "areaInput":
+                    acc[inputObj.name] = ""
+                break;
+            case "checkInput":
+                    acc[inputObj.name] = false
+                break;
+            case "multiCheck":
+                    acc[inputObj.name] = {}
+                break;
+            case "radioInput":
+                    acc[inputObj.name] = false
+                break;
+            case "selectInput":
+                    acc[inputObj.name] = {}
+                break;
+            case "multiSelect":
+                    acc[inputObj.name] = {}
+                break;
+            case "keyValue":
+                    acc[inputObj.name] = {}
+                break;
+            default:
+                 break
+        }
+        return acc
+    }, {}))
 
-    const checkedHandler = (e) => {
-        setStatement({...statement, [e.target.name] : e.target.checked})
-    }
 
-    const multiInputHandler = (textState, e) => {
-        const stateName = e.target.type + '_' + e.target.alt
-        setStatement({...statement, [stateName]: textState })
-    }
-
-    const multiCheckHandler = (checkState, e) => {
-        const stateName = e.target.type + '_' + e.target.alt
-        setStatement({...statement, [stateName]: checkState })
-    }
-
-    const multiSelectHandler = (selectedFields, e) => {
-        const stateName = e.target.name
-        setStatement({...statement, [stateName]: selectedFields })
+    const changeHandler = (inputState, inputName) => {  //main handler
+        setStatement({...statement, [inputName] : inputState})
     }
 
     console.log(statement)
 
+    const logInfo = () => { 
+        console.log(statement)
+    }
+    
     return (    
         <div className={styles.editorBox}>  
+         <button onClick={logInfo}>Вывести</button>
            {arr.map((el, i) => 
            <FieldTemplate 
                 key={i.toString()} 
                 data={el} 
                 changeHandler={changeHandler} 
-                checkedHandler={checkedHandler} 
-                multiInputHandler={multiInputHandler}
-                multiCheckHandler={multiCheckHandler}
-                multiSelectHandler={multiSelectHandler}
            />)}
         </div>
     )
