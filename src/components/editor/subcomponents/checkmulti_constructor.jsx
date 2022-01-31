@@ -9,8 +9,6 @@ export const MultiCheckConstructor = ({data, multiCheckHandler}) => {
         multiCheckHandler(localState, e)
     }
 
-    console.log(localState)
-
     const renderField = () => {
         if (data.quantity > 0){
             for (let i = 0; i < data.quantity; i++){
