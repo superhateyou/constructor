@@ -98,11 +98,11 @@ let arr = [
       placeholder: "Введите пароль...",
       type: "passwordInput",
   },
-  { 
-    name : "input_textarea",
-    placeholder: "Введите текст...",
-    type : "areaInput"
-  },
+  // { 
+  //   name : "input_textarea",
+  //   placeholder: "Введите текст...",
+  //   type : "areaInput"
+  // },
   {
       name : "input_checkbox",
       type : "checkInput"
